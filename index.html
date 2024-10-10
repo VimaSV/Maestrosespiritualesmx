@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="estilo.css">
+    <title>Templo de brujos</title>
+</head>
+
+<body>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+          <span class="close">&times;</span>
+          <h2>¡Bienvenido a nuestra página! 🎉</h2>
+          <p>Tu primera consulta es totalmente gratis. 🆓</p>
+          <button id="claimOffer">¡Reclamar oferta!</button>
+        </div>
+      </div>
+    
+    <!-- SECCION I N I C I O -->
+    <section id="inicio">
+        <div class="contenido">
+            <header>
+                <div class="contenido-header">
+                    <!--<div id="logo-fijo">
+                        <img src="img/LOGO.jpeg" alt="Logo de la empresa">
+                    </div>
+                    -->
+                    <h1><a href="#inicio" class="seleccionado" onclick="seleccionar(this)">Templo de brujos</a></h1>
+                    <nav id="nav" class="">
+                        <ul id="links">
+                            <li><a href="#sobremi" onclick="seleccionar(this)">Quienes somos</a></li>
+                            <li><a href="#servicios" onclick="seleccionar(this)">Servicios</a></li>
+                            <li><a href="#portfolio" onclick="seleccionar(this)">GRATIS</a></li>
+                            <li><a href="#contacto" onclick="seleccionar(this)">Contacto</a></li>
+                        </ul>
+                    </nav>
+
+                    <!-- Icono del menu responsive -->
+                    <div id="icono-nav" onclick="responsiveMenu()">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+
+
+                    <div class="redes">
+                        <a href="#" onclick="abrirWhatsApp()"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </header>
+            <div class="presentacion">
+                <p class="bienvenida">Desvela los secretos del amor eterno con Templo de brujos</p>
+                <h2>Descubre el poder<span> de los amarres espirituales y reaviva la llama de la pasión </span>, en tu vida.</h2>
+                <p class="descripcion">Los velos de la magia se levantan para revelar los secretos del amor.<br>
+                    En las sombras de la noche, donde los sueños se hacen realidad, te invitamos a descubrir el poder de la magia ancestral.<br><br>
+                    ¿Estás listo para experimentar el amor como nunca antes? Únete a nosotros en este viaje hacia la felicidad.
+                </p>
+                <a href="#" onclick="abrirWhatsApp()">Primera consulta totalmente GRATIS!</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION S O B R E M I -->
+    <section id="sobremi">
+        <div class="contenedor-foto">
+            <img src="img/VUDU1.jpeg" alt="amarres" class="imagen-interactiva" title="Haz clic aquí para contactar con un maestro">
+            <img src="img/Altar.jpeg" alt="brujeria" class="imagen-interactiva" title="Haz clic aquí para contactar con un maestro">
+            <img src="img/cartas.jpg" alt="magia" class="imagen-interactiva" title="Haz clic aquí para contactar con un maestro">
+        </div>
+        <div class="sobremi">
+            <p class="titulo-seccion">¿Quienes somos?</p>
+            <h2><span>¡Templo de brujos!</span> </h2><br>
+            <h3>Congreacion con mas de 10 años de experiencia</h3><br><br>
+            <p>
+            Desde tiempos ancestrales, el ser humano ha buscado respuestas en lo oculto. 
+            En Templo de brujos, te ofrecemos una ventana al mundo esotérico, donde los misterios se desvelan y los deseos se hacen realidad."
+            </p><br>
+            <p>
+            Nuestros rituales de amor, realizados con la más profunda devoción,
+            te ayudarán a fortalecer los vínculos con tu pareja o a atraer a tu alma gemela.
+            Además, ofrecemos lecturas de tarot personalizadas que te brindarán claridad y orientación en todos los aspectos de tu vida."
+            </p><br>
+            <p>
+            En Templo de brujos, valoramos tu privacidad y trabajamos con la más estricta confidencialidad.
+            Nuestros rituales se realizan con respeto a tu fe y tus creencias personales.</p>
+            <p><br>
+            En nuestro espacio de trabajo espiritual, ofrecemos servicios personalizados diseñados para ajustarse a las necesidades específicas de cada cliente.
+            Cada caso es único, por lo que nos enfocamos en comprender tu situación a fondo y aplicar técnicas ancestrales y poderosas que aseguran resultados altamente garantizados.
+            Ya sea que busques amarres de amor, hechizos de protección o cualquier otro trabajo espiritual, adaptamos nuestros métodos para lograr un resultado efectivo y duradero.
+            Confía en nuestra experiencia y compromiso para ayudarte a resolver tus problemas y alcanzar tus deseos con la máxima discreción y efectividad.
+            </p><br><br><br><br>
+            <a href="#">Contactar un maestro</a>
+        </div>
+    </section>
+
+    <!-- SECCION S E R V I C I O S -->
+    <section id="servicios">
+        <h3 class="titulo-seccion">Nuestros servicios</h3>
+        <div class="fila">
+            <div class="servicio">
+                <span class="icono"> <i class="fa-sharp fa-thin fa-star-of-life"></i></span>
+                <h4>Magia Blanca y Magia Negra</h4>
+                <hr>
+                <ul class="servicios-tag">
+                    <li>Eliminar envidia</li>
+                    <li>Vudú</li>
+                    <li>Energía</li>
+                </ul>
+                <p>Descubre el equilibrio entre la luz y la oscuridad. Explora los misterios de la magia blanca y negra para encontrar tu propio camino espiritual.</p><br><br>
+                <a href="#" onclick="abrirWhatsApp()" class="btn-servicio">Más Información</a>
+            </div>
+            <div class="servicio">
+                <span class="icono"><i class="fa-solid fa-bolt"></i></i></span>
+                <h4>Amarres de Amor</h4>
+                <hr>
+                <ul class="servicios-tag">
+                    <li>Espiritualidad</li>
+                    <li>Rituales</li>
+                    <li>Hechizos</li>
+                </ul>
+                <p>¿Quieres recuperar el amor de tu vida? Nuestros poderosos amarres te ayudarán a reconectar con tu pareja y fortalecer vuestro vínculo. <br> 
+                     Atrae el amor verdadero y duradero. Nuestros rituales de amor te guiarán hacia la felicidad y la pasión.
+                </p>
+                <a href="#" onclick="abrirWhatsApp()" class="btn-servicio">Más Información</a>
+            </div>
+            <div class="servicio">
+                <span class="icono"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                <h4>Retiro de Vicios</h4>
+                <hr>
+                <ul class="servicios-tag">
+                    <li>Energía</li>
+                    <li>Videncia</li>
+                    <li>Sanación</li>
+                </ul><br>
+                <p>Libérate de las cadenas de la adicción. Nuestros rituales de limpieza espiritual te ayudarán a superar cualquier vicio y a recuperar el control de tu vida.</p><br><br>
+                <a href="#" onclick="abrirWhatsApp()" class="btn-servicio">Más Información</a>
+            </div>
+        </div>
+        <div class="fila">                              
+            <div class="servicio">
+                <span class="icono"><i class="fa-solid fa-database"></i></span>
+                <h4>Rituales de luna nueva y llena</h4>
+                <hr>
+                <ul class="servicios-tag">
+                    <li>Chamanismo</li>
+                    <li></li>
+                    <li>Protección espiritual</li>
+                </ul><br>
+                <p>Aprovecha la energía de los ciclos lunares para potenciar tus deseos y manifestar tus sueños.</p><br><br>
+                <a href="#" onclick="abrirWhatsApp()" class="btn-servicio">Más Información</a>
+            </div>
+            <div class="servicio">
+                <span class="icono"><i class="fa-solid fa-palette"></i></span>
+                <h4>Limpieza energética de espacios</h4>
+                <hr>
+                <ul class="servicios-tag">
+                    <li>Esoterismo</li>
+                    <li></li>
+                    <li>Limpieza espiritual</li>
+                </ul>
+                <p>Transforma tu hogar en un santuario de paz y armonía. Eliminaremos las energías negativas de tu entorno y crearemos un espacio propicio para la abundancia y el bienestar.</p><br>
+                <a href="#" onclick="abrirWhatsApp()" class="btn-servicio">Más Información</a>
+            </div>
+            <div class="servicio">
+                <span class="icono"><i class="fa-solid fa-person-circle-question"></i></span>
+                <h4>Consagración de objetos</h4>
+                <hr>
+                <ul class="servicios-tag">
+                    <li>Sanación de chakras</li>
+                    <li></li>
+                    <li>aura</li>
+                </ul><br>
+                <p>Convierte objetos cotidianos en amuletos de poder. Consagraremos tus joyas, cristales o cualquier objeto especial para que te acompañe en tu camino espiritual.</p><br>
+                <a href="#" onclick="abrirWhatsApp()" class="btn-servicio">Más Información</a>
+            </div>
+        </div>
+        <div class="fila">
+            <div class="servicio">
+                <span class="icono"> <i class="fa-solid fa-volcano"></i></span>
+                <h4>Hechizos personalizados</h4>
+                <hr>
+                <ul class="servicios-tag">
+                    <li>ocultismo</li>
+                    <li></li>
+                    <li>artes oscuras</li>
+                </ul>
+                <p>Ofrecemos hechizos personalizados adaptados a tus necesidades específicas.
+                    Ya sea para atraer el amor, la prosperidad o la protección, nuestros rituales son únicos y poderosos.</p><br>
+                <a href="#" onclick="abrirWhatsApp()" class="btn-servicio">Más Información</a>
+            </div>
+            <div class="servicio">
+                <span class="icono"><i class="fa-solid fa-file-code"></i></span>
+                <h4>Tarot evolutivo</h4>
+                <hr>
+                <ul class="servicios-tag">
+                    <li>Lectura de tarot online</li>
+                    <li></li>
+                    <li>dinero</li>
+                </ul><br>
+                <p>Más allá de una simple lectura, te ofrecemos un viaje de autoconocimiento a través del tarot. Descubre tu potencial y desbloquea tu camino hacia la felicidad.</p><br>
+                <a href="#" onclick="abrirWhatsApp()" class="btn-servicio">Más Información</a>
+            </div>
+            <div class="servicio">
+                <span class="icono"><i class="fa-sharp-duotone fa-solid fa-circle-half-stroke"></i></span>
+                <h4>Sanación ancestral</h4>
+                <hr>
+                <ul class="servicios-tag">
+                    <li>Cómo recuperar a mi ex</li>
+                    <li></li>
+                    <li>poderosos</li>
+                </ul><br>
+                <p> Libera traumas y patrones heredados de tus antepasados. Conecta con tus raíces y sana tu linaje familiar.</p><br><br>
+                <a href="#" onclick="abrirWhatsApp()" class="btn-servicio">Más Información</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION H A B I L I D A D E S -->
+    <div class="contenedor-skills" id="skills">
+        <h3>EFECTIVIDAD EN HABILIDADES ESPIRITUALES</h3>
+        <div class="skill">
+            <div class="info">
+                <p> <span class="lista"> </span>Amarres de Amor Poderosos</p>
+                <span class="porcentaje">95%</span>
+            </div>
+
+            <div class="barra">
+                <div class="" id="html"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="info">
+                <p> <span class="lista"> </span>Hechizos de Protección Personal</p>
+                <span class="porcentaje">90%</span>
+            </div>
+
+            <div class="barra">
+                <div class="" id="js"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="info">
+                <p> <span class="lista"> </span>Rituales de Limpieza Espiritual</p>
+                <span class="porcentaje">90%</span>
+            </div>
+
+            <div class="barra">
+                <div class="" id="bd"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="info">
+                <p> <span class="lista"> </span>Trabajos de Prosperidad</p>
+                <span class="porcentaje">85%</span>
+            </div>
+
+            <div class="barra">
+                <div class="" id="ps"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="info">
+                <p> <span class="lista"> </span>Magia Blanca y Magia Negra</p>
+                <span class="porcentaje">80%</span>
+            </div>
+
+            <div class="barra">
+                <div class="" id="bn"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="info">
+                <p> <span class="lista"> </span>Lectura de Tarot Online</p>
+                <span class="porcentaje">85%</span>
+            </div>
+
+            <div class="barra">
+                <div class="" id="lt"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="info">
+                <p> <span class="lista"> </span>Brujería y Rituales</p>
+                <span class="porcentaje">92%</span>
+            </div>
+
+            <div class="barra">
+                <div class="" id="br"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="info">
+                <p> <span class="lista"> </span>Recuperar a mi Pareja</p>
+                <span class="porcentaje">85%</span>
+            </div>
+
+            <div class="barra">
+                <div class="" id="rp"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="info">
+                <p> <span class="lista"> </span>Rituales para Atraer el Dinero</p>
+                <span class="porcentaje">88%</span>
+            </div>
+
+            <div class="barra">
+                <div class="" id="rd"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCION PORTAFOLIO -->
+    <section id="portfolio">
+        <h3 class="titulo-seccion">GRATIS</h3>
+        
+        <section class="keywords">
+            <h2>"¡Desbloquea tu asesoría GRATUITA ahora! 🚀
+
+                ¿Tienes dudas? ¿Necesitas orientación? No esperes más:
+                
+                📞 Llámanos o
+                📱 Escríbenos por WhatsApp
+                
+                Y obtén tu primera consulta totalmente GRATIS.</h2><br>
+            <a href="#" onclick="abrirWhatsApp()">Primera consulta totalmente GRATIS!</a><br><br>
+            <ul>
+              <li>Protección de información</li>
+              <li>Tranquilidad</li>
+              <li>Confianza en línea</li>
+              <li>Experiencia segura</li>
+              <li>Confidencialidad</li>
+              <li>esoterismo</li>
+              <li>Suerte</li>
+              <li>brujería y amor</li>
+              <li>magia negra y protección</li>
+              <li>amarres efectivos</li>
+              <li>rituales esotéricos</li>
+              <li>videncia online</li>
+              <li>tarot del amor</li>
+              <li>hechizos de dinero</li>
+              <li>magia blanca para la salud</li>
+              <li>recuperar a tu pareja</li>
+              <li>limpieza energética del hogar</li>
+              <li>interpretación de los sueños</li>
+              <li>cómo hacer un amarre de amor</li>
+              <li>mejores hechizos de amor</li>
+              <li>rituales para atraer el dinero rápido</li>
+              <li>cómo romper un amarre</li>
+              <li>hechizos de amor caseros</li>
+              </ul><br><br>
+          </section><br><br><br><br>
+        <div class="fila">
+            <div class="proyecto">
+                <div class="overlay"></div>
+                <img src="img/cartas2.jpeg" alt="">
+                <div class="info">
+                    <h4>esoterismo</h4>
+                    <p>rituales</p>
+                </div>
+            </div>
+            <div class="proyecto">
+                <div class="overlay"></div>
+                <img src="img/brujo1.jpeg" alt="">
+                <div class="info">
+                    <h4>amor</h4>
+                    <p>bienestar</p>
+                </div>
+            </div>
+            <div class="proyecto">
+                <div class="overlay"></div>
+                <img src="img/ateol.jpeg" alt="">
+                <div class="info">
+                    <h4>energías</h4>
+                    <p>ocultismo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCTION C O N T A C T O -->
+    <section id="contacto">
+        <h3 class="titulo-seccion">Contactanos ahora</h3>
+        <div class="contenedor-form">
+            <id="contactForm" action="#" onsubmit="return false;">
+                <div class="fila mitad">
+                    <input type="text" placeholder="Nombre Completo *" class="input-mitad">
+                    <input type="email" placeholder="Dirección de Email" class="input-mitad">
+                    <input type="number" placeholder="Celular de contacto" class="input-mitad">
+                </div>
+                <div class="fila">
+                    <input type="text" placeholder="Tema..." class="input-full">
+                </div>
+                <div class="fila">
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Tu Mensaje..." class="input-full"></textarea>
+                </div>
+
+                <input type="submit" value="Enviar Mensaje" class="btn-enviar" onclick="enviarATawk()">
+            </form>
+        </div>
+    </section>
+    <a href="" onclick="abrirWhatsApp()" target="_blank" class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    <!-- SECCION FOOTER -->
+    <footer>
+        <p>En Templo de brujos, implementamos las medidas de seguridad más avanzadas para proteger tus datos personales de accesos no autorizados, alteraciones, divulgación o destrucción.</p><br><br>
+        <p>Todos los derechos reservados - Templo de brujos</p><br>
+        <div class="redes">
+            <a href="#" onclick="abrirWhatsApp()"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        
+
+    </footer>
+
+    <script src="script.js"></script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/66ef4308e5982d6c7bb29f7a/1i8tr6r1t';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+
+</html>
