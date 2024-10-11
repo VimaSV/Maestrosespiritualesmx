@@ -127,13 +127,6 @@ whatsappButton.addEventListener('mouseout', () => {
 });
 
 function enviarATawk() {
-  // Verificar si Tawk_API está disponible
-  if (typeof Tawk_API === 'undefined') {
-      console.error('Tawk_API no está definido. Asegúrate de que el script de Tawk.to se ha cargado correctamente.');
-      alert('Error al enviar el mensaje. Por favor, intenta de nuevo más tarde.');
-      return;
-  }
-
   // Obtener los valores de los campos del formulario
   const nombre = document.querySelector('input[placeholder="Nombre Completo *"]').value;
   const email = document.querySelector('input[placeholder="Dirección de Email"]').value;
@@ -149,36 +142,28 @@ Celular: ${celular}
 Tema: ${tema}
 Mensaje: ${mensaje}`;
 
-  // Intentar enviar el mensaje a Tawk.to
-  try {
-      Tawk_API.onLoad = function() {
-          Tawk_API.setAttributes({
-              name: nombre,
-              email: email
-          }, function(error) {
-              if (error) {
-                  console.error('Error al establecer atributos:', error);
-              }
-          });
-
-          Tawk_API.sendMessage(mensajeTawk, function(error) {
-              if (error) {
-                  console.error('Error al enviar mensaje:', error);
-                  alert('Error al enviar el mensaje. Por favor, intenta de nuevo más tarde.');
-              } else {
-                  console.log('Mensaje enviado correctamente a Tawk.to');
-                  alert('Mensaje enviado correctamente');
-                  document.getElementById('contactForm').reset(); // Limpiar el formulario
-              }
-          });
-      };
-
-      // Si Tawk_API ya está cargado, ejecutar onLoad inmediatamente
-      if (Tawk_API.onLoaded) {
-          Tawk_API.onLoad();
-      }
-  } catch (error) {
-      console.error('Error al interactuar con Tawk_API:', error);
-      alert('Error al enviar el mensaje. Por favor, intenta de nuevo más tarde.');
+  // Verificar si Tawk_API está disponible
+  if (typeof Tawk_API !== 'undefined') {
+      // Establecer los atributos del visitante
+      Tawk_API.setAttributes({
+          name: nombre,
+          email: email
+      }, function(error) {
+          if (!error) {
+              // Si no hay error al establecer los atributos, enviar el mensaje
+              Tawk_API.onLoad = function() {
+                  Tawk_API.sendMessage(mensajeTawk);
+              };
+              alert('Mensaje enviado correctamente');
+              // Limpiar el formulario
+              document.getElementById('formularioContacto').reset();
+          } else {
+              console.error('Error al establecer atributos:', error);
+              alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.');
+          }
+      });
+  } else {
+      console.error('Tawk_API no está definido');
+      alert('No se pudo conectar con el servicio de chat. Por favor, inténtalo más tarde.');
   }
 }
