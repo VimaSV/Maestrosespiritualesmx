@@ -386,19 +386,18 @@
     <section id="contacto">
         <h3 class="titulo-seccion">Contactanos ahora</h3>
         <div class="contenedor-form">
-            <form id="contactForm" onsubmit="event.preventDefault(); enviarATawk();">
+            <form id="contactForm">
                 <div class="fila mitad">
-                    <input type="text" placeholder="Nombre Completo *" class="input-mitad" required>
-                    <input type="email" placeholder="Dirección de Email" class="input-mitad" required>
-                    <input type="tel" placeholder="Celular de contacto" class="input-mitad" required>
+                    <input type="text" id="nombre" placeholder="Nombre Completo *" class="input-mitad" required>
+                    <input type="email" id="email" placeholder="Dirección de Email" class="input-mitad" required>
+                    <input type="tel" id="telefono" placeholder="Celular de contacto" class="input-mitad" required>
                 </div>
                 <div class="fila">
-                    <input type="text" placeholder="Tema..." class="input-full" required>
+                    <input type="text" id="tema" placeholder="Tema..." class="input-full" required>
                 </div>
                 <div class="fila">
-                    <textarea placeholder="Tu Mensaje..." class="input-full" required></textarea>
+                    <textarea id="mensaje" placeholder="Tu Mensaje..." class="input-full" required></textarea>
                 </div>
-            
                 <input type="submit" value="Enviar Mensaje" class="btn-enviar">
             </form>
         </div>
@@ -419,23 +418,59 @@
 
     <script src="script.js"></script>
 
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/66ef4308e5982d6c7bb29f7a/1i8tr6r1t';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
-        
-        // Agregar esta función de callback
-        Tawk_API.onLoad = function(){
-            console.log('Tawk.to widget is ready');
-            Tawk_API.onLoaded = true;
-        };
-        </script>
+<!-- Integración con Tawk.to -->
+<script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function(){
+        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/66ef4308e5982d6c7bb29f7a/1i8tr6r1t';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
+
+    // Callback cuando Tawk.to está listo
+    Tawk_API.onLoad = function() {
+        console.log('Tawk.to widget is ready');
+        Tawk_API.onLoaded = true;
+    };
+
+    // Interceptar el envío del formulario
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();  // Evitar el envío predeterminado del formulario
+
+        // Obtener los datos del formulario
+        var nombre = document.getElementById('nombre').value;
+        var email = document.getElementById('email').value;
+        var telefono = document.getElementById('telefono').value;
+        var tema = document.getElementById('tema').value;
+        var mensaje = document.getElementById('mensaje').value;
+
+        // Crear un mensaje personalizado para el chat de Tawk.to
+        var chatMessage = "Nuevo contacto:\n" +
+                          "Nombre: " + nombre + "\n" +
+                          "Email: " + email + "\n" +
+                          "Teléfono: " + telefono + "\n" +
+                          "Tema: " + tema + "\n" +
+                          "Mensaje: " + mensaje;
+
+        // Verificar si Tawk.to está listo
+        if (Tawk_API.onLoaded) {
+            // Enviar mensaje al chat de Tawk.to
+            Tawk_API.addEvent('Formulario de contacto', { message: chatMessage }, function(error) {
+                if (!error) {
+                    alert('Los datos se han enviado al chat. Te contactaremos pronto.');
+                } else {
+                    alert('Hubo un error al enviar los datos al chat.');
+                }
+            });
+        } else {
+            alert('Tawk.to aún no está listo. Intenta de nuevo en unos segundos.');
+        }
+    });
+</script>
+
 </body>
 
 </html>
