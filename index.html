@@ -430,15 +430,9 @@
         s0.parentNode.insertBefore(s1, s0);
     })();
 
-    // Callback cuando Tawk.to está listo
-    Tawk_API.onLoad = function() {
-        console.log('Tawk.to widget is ready');
-        Tawk_API.onLoaded = true;
-    };
-
     // Interceptar el envío del formulario
     document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault();  // Evitar el envío predeterminado del formulario
+        event.preventDefault();  // Evitar el comportamiento por defecto
 
         // Obtener los datos del formulario
         var nombre = document.getElementById('nombre').value;
@@ -447,25 +441,27 @@
         var tema = document.getElementById('tema').value;
         var mensaje = document.getElementById('mensaje').value;
 
-        // Verificar si Tawk.to está listo
+        // Mostrar un mensaje en el chat
         if (Tawk_API.onLoaded) {
-            // Enviar los datos del formulario como atributos del visitante al chat
-            Tawk_API.setAttributes({
-                'Nombre': nombre,
-                'Email': email,
-                'Teléfono': telefono,
-                'Tema': tema,
-                'Mensaje': mensaje
-            }, function(error) {
-                if (!error) {
-                    alert('Los datos se han enviado al chat correctamente. Te contactaremos pronto.');
-                } else {
+            Tawk_API.maximize(); // Abrir el chat
+            Tawk_API.addEvent("FormularioEnviado", {
+                "Nombre": nombre,
+                "Email": email,
+                "Teléfono": telefono,
+                "Tema": tema,
+                "Mensaje": mensaje
+            }, function(error){
+                if (error) {
                     alert('Hubo un error al enviar los datos al chat.');
+                } else {
+                    alert('Mensaje enviado al chat. ¡Te contactaremos pronto!');
                 }
             });
         } else {
-            alert('Tawk.to aún no está listo. Intenta de nuevo en unos segundos.');
+            alert('Tawk.to no está listo. Inténtalo de nuevo.');
         }
+
+        // Aquí puedes agregar código para enviar los datos por correo o a una base de datos.
     });
 </script>
 
