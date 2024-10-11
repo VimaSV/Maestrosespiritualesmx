@@ -430,8 +430,12 @@
     s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
+    
+    // Agregar esta función de callback
+    Tawk_API.onLoad = function(){
+        console.log('Tawk.to widget is ready');
+    };
     </script>
-    <!--End of Tawk.to Script-->
 </body>
 
 </html>

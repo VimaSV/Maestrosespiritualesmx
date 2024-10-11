@@ -134,42 +134,32 @@ function enviarATawk() {
   var tema = document.querySelector('input[placeholder="Tema..."]').value;
   var mensaje = document.querySelector('textarea[placeholder="Tu Mensaje..."]').value;
 
-  // Verificar si Tawk_API está disponible
-  if (typeof Tawk_API !== 'undefined') {
-    // Maximizar la ventana del chat
-    Tawk_API.maximize();
-    
-    // Esperar un poco para asegurarse de que el chat esté abierto
-    setTimeout(function() {
-      // Establecer los datos del visitante
-      Tawk_API.visitor.setAttributes({
-        'name': nombre,
-        'email': email,
-        'phone': celular
-      }, function(error) {
-        if (!error) {
-          // Establecer el nombre del visitante
-          Tawk_API.visitor.setName(nombre);
-          
-          // Agregar el mensaje como un evento personalizado
-          Tawk_API.visitor.addEvent('Mensaje del formulario de contacto', {
-            'tema': tema,
-            'mensaje': mensaje
+  // Función para enviar el mensaje cuando Tawk_API esté listo
+  function sendMessage() {
+      if (typeof Tawk_API !== 'undefined' && Tawk_API.onLoaded) {
+          Tawk_API.maximize();
+          Tawk_API.setAttributes({
+              'name': nombre,
+              'email': email,
+              'phone': celular
           }, function(error) {
-            if (!error) {
-              alert('Mensaje enviado correctamente');
-              document.getElementById('contactForm').reset();
-            } else {
-              alert('Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.');
-            }
+              if (!error) {
+                  Tawk_API.onChatStarted = function(){
+                      Tawk_API.sendMessage(tema + ': ' + mensaje);
+                  };
+                  Tawk_API.toggle();
+                  alert('Mensaje enviado correctamente');
+                  document.getElementById('contactForm').reset();
+              } else {
+                  alert('Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.');
+              }
           });
-        } else {
-          alert('Hubo un problema al establecer los datos del usuario. Por favor, inténtalo de nuevo.');
-        }
-      });
-    }, 1000);
-  } else {
-    console.error('Tawk_API no está definido. Asegúrate de que Tawk.to esté correctamente instalado.');
-    alert('Hubo un problema al conectar con el chat. Por favor, inténtalo de nuevo más tarde.');
+      } else {
+          // Si Tawk_API aún no está listo, espera 100ms y vuelve a intentar
+          setTimeout(sendMessage, 100);
+      }
   }
+
+  // Iniciar el proceso de envío
+  sendMessage();
 }
