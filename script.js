@@ -127,39 +127,58 @@ whatsappButton.addEventListener('mouseout', () => {
 });
 
 function enviarATawk() {
-  // Obtener los valores del formulario
-  var nombre = document.querySelector('input[placeholder="Nombre Completo *"]').value;
-  var email = document.querySelector('input[placeholder="Dirección de Email"]').value;
-  var celular = document.querySelector('input[placeholder="Celular de contacto"]').value;
-  var tema = document.querySelector('input[placeholder="Tema..."]').value;
-  var mensaje = document.querySelector('textarea[placeholder="Tu Mensaje..."]').value;
-
-  // Función para enviar el mensaje cuando Tawk_API esté listo
-  function sendMessage() {
-      if (typeof Tawk_API !== 'undefined' && Tawk_API.onLoaded) {
-          Tawk_API.maximize();
-          Tawk_API.setAttributes({
-              'name': nombre,
-              'email': email,
-              'phone': celular
-          }, function(error) {
-              if (!error) {
-                  Tawk_API.onChatStarted = function(){
-                      Tawk_API.sendMessage(tema + ': ' + mensaje);
-                  };
-                  Tawk_API.toggle();
-                  alert('Mensaje enviado correctamente');
-                  document.getElementById('contactForm').reset();
-              } else {
-                  alert('Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.');
-              }
-          });
-      } else {
-          // Si Tawk_API aún no está listo, espera 100ms y vuelve a intentar
-          setTimeout(sendMessage, 100);
-      }
+  // Verificar si Tawk_API está disponible
+  if (typeof Tawk_API === 'undefined') {
+      console.error('Tawk_API no está definido. Asegúrate de que el script de Tawk.to se ha cargado correctamente.');
+      alert('Error al enviar el mensaje. Por favor, intenta de nuevo más tarde.');
+      return;
   }
 
-  // Iniciar el proceso de envío
-  sendMessage();
+  // Obtener los valores de los campos del formulario
+  const nombre = document.querySelector('input[placeholder="Nombre Completo *"]').value;
+  const email = document.querySelector('input[placeholder="Dirección de Email"]').value;
+  const celular = document.querySelector('input[placeholder="Celular de contacto"]').value;
+  const tema = document.querySelector('input[placeholder="Tema..."]').value;
+  const mensaje = document.querySelector('textarea[placeholder="Tu Mensaje..."]').value;
+
+  // Construir el mensaje para Tawk.to
+  const mensajeTawk = `Nuevo mensaje de contacto:
+Nombre: ${nombre}
+Email: ${email}
+Celular: ${celular}
+Tema: ${tema}
+Mensaje: ${mensaje}`;
+
+  // Intentar enviar el mensaje a Tawk.to
+  try {
+      Tawk_API.onLoad = function() {
+          Tawk_API.setAttributes({
+              name: nombre,
+              email: email
+          }, function(error) {
+              if (error) {
+                  console.error('Error al establecer atributos:', error);
+              }
+          });
+
+          Tawk_API.sendMessage(mensajeTawk, function(error) {
+              if (error) {
+                  console.error('Error al enviar mensaje:', error);
+                  alert('Error al enviar el mensaje. Por favor, intenta de nuevo más tarde.');
+              } else {
+                  console.log('Mensaje enviado correctamente a Tawk.to');
+                  alert('Mensaje enviado correctamente');
+                  document.getElementById('contactForm').reset(); // Limpiar el formulario
+              }
+          });
+      };
+
+      // Si Tawk_API ya está cargado, ejecutar onLoad inmediatamente
+      if (Tawk_API.onLoaded) {
+          Tawk_API.onLoad();
+      }
+  } catch (error) {
+      console.error('Error al interactuar con Tawk_API:', error);
+      alert('Error al enviar el mensaje. Por favor, intenta de nuevo más tarde.');
+  }
 }
