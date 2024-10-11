@@ -447,20 +447,18 @@
         var tema = document.getElementById('tema').value;
         var mensaje = document.getElementById('mensaje').value;
 
-        // Crear un mensaje personalizado para el chat de Tawk.to
-        var chatMessage = "Nuevo contacto:\n" +
-                          "Nombre: " + nombre + "\n" +
-                          "Email: " + email + "\n" +
-                          "Teléfono: " + telefono + "\n" +
-                          "Tema: " + tema + "\n" +
-                          "Mensaje: " + mensaje;
-
         // Verificar si Tawk.to está listo
         if (Tawk_API.onLoaded) {
-            // Enviar mensaje al chat de Tawk.to
-            Tawk_API.addEvent('Formulario de contacto', { message: chatMessage }, function(error) {
+            // Enviar los datos del formulario como atributos del visitante al chat
+            Tawk_API.setAttributes({
+                'Nombre': nombre,
+                'Email': email,
+                'Teléfono': telefono,
+                'Tema': tema,
+                'Mensaje': mensaje
+            }, function(error) {
                 if (!error) {
-                    alert('Los datos se han enviado al chat. Te contactaremos pronto.');
+                    alert('Los datos se han enviado al chat correctamente. Te contactaremos pronto.');
                 } else {
                     alert('Hubo un error al enviar los datos al chat.');
                 }
