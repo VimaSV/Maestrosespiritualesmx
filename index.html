@@ -386,20 +386,20 @@
     <section id="contacto">
         <h3 class="titulo-seccion">Contactanos ahora</h3>
         <div class="contenedor-form">
-            <form id="contactForm" action="#" onsubmit="return false;">
+            <form id="contactForm" onsubmit="event.preventDefault(); enviarATawk();">
                 <div class="fila mitad">
-                    <input type="text" placeholder="Nombre Completo *" class="input-mitad">
-                    <input type="email" placeholder="Dirección de Email" class="input-mitad">
-                    <input type="number" placeholder="Celular de contacto" class="input-mitad">
+                    <input type="text" placeholder="Nombre Completo *" class="input-mitad" required>
+                    <input type="email" placeholder="Dirección de Email" class="input-mitad" required>
+                    <input type="tel" placeholder="Celular de contacto" class="input-mitad" required>
                 </div>
                 <div class="fila">
-                    <input type="text" placeholder="Tema..." class="input-full">
+                    <input type="text" placeholder="Tema..." class="input-full" required>
                 </div>
                 <div class="fila">
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Tu Mensaje..." class="input-full"></textarea>
+                    <textarea placeholder="Tu Mensaje..." class="input-full" required></textarea>
                 </div>
-
-                <input type="submit" value="Enviar Mensaje" class="btn-enviar" onclick="enviarATawk()">
+            
+                <input type="submit" value="Enviar Mensaje" class="btn-enviar">
             </form>
         </div>
     </section>
@@ -419,23 +419,23 @@
 
     <script src="script.js"></script>
 
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/66ef4308e5982d6c7bb29f7a/1i8tr6r1t';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    
-    // Agregar esta función de callback
-    Tawk_API.onLoad = function(){
-        console.log('Tawk.to widget is ready');
-    };
-    </script>
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/66ef4308e5982d6c7bb29f7a/1i8tr6r1t';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        
+        // Agregar esta función de callback
+        Tawk_API.onLoad = function(){
+            console.log('Tawk.to widget is ready');
+            Tawk_API.onLoaded = true;
+        };
+        </script>
 </body>
 
 </html>
