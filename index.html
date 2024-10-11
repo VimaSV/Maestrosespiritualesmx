@@ -386,19 +386,22 @@
     <section id="contacto">
         <h3 class="titulo-seccion">Contactanos ahora</h3>
         <div class="contenedor-form">
-            <form id="contactForm">
+            <form action="https://formsubmit.co/ tu@correoelectrónico.com " method="POST">
                 <div class="fila mitad">
-                    <input type="text" id="nombre" placeholder="Nombre Completo *" class="input-mitad" required>
-                    <input type="email" id="email" placeholder="Dirección de Email" class="input-mitad" required>
-                    <input type="tel" id="telefono" placeholder="Celular de contacto" class="input-mitad" required>
+                    <input type="text"  name="text" placeholder="Nombre Completo *" class="input-mitad" required>
+                    <input type="email" name="email" placeholder="Dirección de Email" class="input-mitad" required>
+                    <input type="tel"  name="tel" placeholder="Celular de contacto" class="input-mitad" required>
                 </div>
                 <div class="fila">
-                    <input type="text" id="tema" placeholder="Tema..." class="input-full" required>
+                    <input type="text"  name="Tema" placeholder="Tema..." class="input-full" required>
                 </div>
                 <div class="fila">
-                    <textarea id="mensaje" placeholder="Tu Mensaje..." class="input-full" required></textarea>
+                    <textarea id="mensaje" name="mensaje" placeholder="Tu Mensaje..." class="input-full" required></textarea>
                 </div>
                 <input type="submit" value="Enviar Mensaje" class="btn-enviar">
+
+                <input type="hidden" name="_next">
+                <input type="hidden" name="_captcha" value="false">
             </form>
         </div>
     </section>
@@ -429,40 +432,6 @@
         s1.setAttribute('crossorigin', '*');
         s0.parentNode.insertBefore(s1, s0);
     })();
-
-    // Interceptar el envío del formulario
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault();  // Evitar el comportamiento por defecto
-
-        // Obtener los datos del formulario
-        var nombre = document.getElementById('nombre').value;
-        var email = document.getElementById('email').value;
-        var telefono = document.getElementById('telefono').value;
-        var tema = document.getElementById('tema').value;
-        var mensaje = document.getElementById('mensaje').value;
-
-        // Mostrar un mensaje en el chat
-        if (Tawk_API.onLoaded) {
-            Tawk_API.maximize(); // Abrir el chat
-            Tawk_API.addEvent("FormularioEnviado", {
-                "Nombre": nombre,
-                "Email": email,
-                "Teléfono": telefono,
-                "Tema": tema,
-                "Mensaje": mensaje
-            }, function(error){
-                if (error) {
-                    alert('Hubo un error al enviar los datos al chat.');
-                } else {
-                    alert('Mensaje enviado al chat. ¡Te contactaremos pronto!');
-                }
-            });
-        } else {
-            alert('Tawk.to no está listo. Inténtalo de nuevo.');
-        }
-
-        // Aquí puedes agregar código para enviar los datos por correo o a una base de datos.
-    });
 </script>
 
 </body>
